@@ -34,7 +34,7 @@ namespace Simple_ciphers.Model.Ciphers
         /// </summary>
         /// <param name="plaintext">Text to be encrypted.</param>
         /// <param name="key">Fence height.</param>
-        /// <returns>Сiphertext.</returns>
+        /// <returns>The ciphertext.</returns>
         public string Encrypt(string plaintext, string key)
         {
             int numericKey = Model.Validation.Validation.ModifyKey(key);

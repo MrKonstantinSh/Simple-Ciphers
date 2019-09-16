@@ -26,15 +26,23 @@ namespace Simple_ciphers.Controller
                 case Model.Ciphers.TypesOfCiphers.RailFence:
                     Model.Ciphers.RailFence railFence = new Model.Ciphers.RailFence();
                     if (action == Model.Ciphers.Action.Encrypt)
+                    {
                         return railFence.Encrypt(text, key);
+                    }
                     else
+                    {
                         return railFence.Decrypt(text, key);
+                    }
                 case Model.Ciphers.TypesOfCiphers.RotatingSquare:
                     Model.Ciphers.RotatingGrill rotatingSquare = new Model.Ciphers.RotatingGrill();
                     if (action == Model.Ciphers.Action.Encrypt)
+                    {
                         return rotatingSquare.Encrypt(text);
+                    }
                     else
+                    {
                         return rotatingSquare.Decrypt(text);
+                    }
                 default:
                     return null;
             }
