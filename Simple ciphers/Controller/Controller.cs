@@ -29,6 +29,12 @@ namespace Simple_ciphers.Controller
                         return railFence.Encrypt(text, key);
                     else
                         return railFence.Decrypt(text, key);
+                case Model.Ciphers.TypesOfCiphers.RotatingSquare:
+                    Model.Ciphers.RotatingGrill rotatingSquare = new Model.Ciphers.RotatingGrill();
+                    if (action == Model.Ciphers.Action.Encrypt)
+                        return rotatingSquare.Encrypt(text);
+                    else
+                        return rotatingSquare.Decrypt(text);
                 default:
                     return null;
             }
@@ -53,6 +59,7 @@ namespace Simple_ciphers.Controller
             {
                 throw new IOException();
             }
+
             plaintext = Model.Validation.Validation.ModifyText(plaintext);
 
             string ciphertext = PerformAction(plaintext, key, typeOfChiper, Model.Ciphers.Action.Encrypt);
@@ -66,11 +73,9 @@ namespace Simple_ciphers.Controller
         /// <param name="plaintext">The text to be encrypted.</param>
         /// <param name="key">The key for the encryption algorithm.</param>
         /// <param name="typeOfChiper">The name of the encryption algorithm.</param>
-        /// <returns>The ciphertext.</returns>
+        /// <returns>The cipher text.</returns>
         public static string Encrypt(string plaintext, string key, Model.Ciphers.TypesOfCiphers typeOfChiper)
         {
-            plaintext = Model.Validation.Validation.ModifyText(plaintext);
-
             return PerformAction(plaintext, key, typeOfChiper, Model.Ciphers.Action.Encrypt);
         }
 
@@ -93,6 +98,7 @@ namespace Simple_ciphers.Controller
             {
                 throw new IOException();
             }
+
             ciphertext = Model.Validation.Validation.ModifyText(ciphertext);
 
             string plaintext = PerformAction(ciphertext, key, typeOfChiper, Model.Ciphers.Action.Decrypt);
@@ -108,8 +114,6 @@ namespace Simple_ciphers.Controller
         /// <returns>Decrypted text.</returns>
         public static string Decrypt(string ciphertext, string key, Model.Ciphers.TypesOfCiphers typeOfChiper)
         {
-            ciphertext = Model.Validation.Validation.ModifyText(ciphertext);
-
             return PerformAction(ciphertext, key, typeOfChiper, Model.Ciphers.Action.Decrypt);
         }
     }

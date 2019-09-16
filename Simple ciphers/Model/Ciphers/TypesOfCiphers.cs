@@ -11,6 +11,7 @@ namespace Simple_ciphers.Model.Ciphers
     /// </summary>
     public enum TypesOfCiphers
     {
-        RailFence
+        RailFence,
+        RotatingSquare
     }
 }

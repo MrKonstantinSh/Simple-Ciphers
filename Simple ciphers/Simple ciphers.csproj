@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="Model\Ciphers\Action.cs" />
     <Compile Include="Model\Ciphers\ICipher.cs" />
+    <Compile Include="Model\Ciphers\RotatingGrill.cs" />
     <Compile Include="Model\Ciphers\TypesOfCiphers.cs" />
     <Compile Include="Model\Ciphers\RailFence.cs" />
     <Compile Include="Model\Validation\Validation.cs" />
