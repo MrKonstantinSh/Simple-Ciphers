@@ -43,6 +43,16 @@ namespace Simple_ciphers.Controller
                     {
                         return rotatingSquare.Decrypt(text);
                     }
+                case Model.Ciphers.TypesOfCiphers.Vigenere:
+                    Model.Ciphers.Vigenere vigener = new Model.Ciphers.Vigenere();
+                    if (action == Model.Ciphers.Action.Encrypt)
+                    {
+                        return vigener.Encrypt(text, key);
+                    }
+                    else
+                    {
+                        return vigener.Decrypt(text, key);
+                    }
                 default:
                     return null;
             }
@@ -68,7 +78,7 @@ namespace Simple_ciphers.Controller
                 throw new IOException();
             }
 
-            plaintext = Model.Validation.Validation.ModifyText(plaintext);
+            plaintext = Model.Validation.Validation.ModifyText(plaintext, typeOfChiper);
 
             string ciphertext = PerformAction(plaintext, key, typeOfChiper, Model.Ciphers.Action.Encrypt);
 
@@ -107,7 +117,7 @@ namespace Simple_ciphers.Controller
                 throw new IOException();
             }
 
-            ciphertext = Model.Validation.Validation.ModifyText(ciphertext);
+            ciphertext = Model.Validation.Validation.ModifyText(ciphertext, typeOfChiper);
 
             string plaintext = PerformAction(ciphertext, key, typeOfChiper, Model.Ciphers.Action.Decrypt);
             File.WriteAllText(pathToDestFile, plaintext);

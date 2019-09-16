@@ -48,11 +48,13 @@
             this.lblKey = new System.Windows.Forms.Label();
             this.tbKey = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.rbVigenerCipher = new System.Windows.Forms.RadioButton();
             this.gbMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.rbVigenerCipher);
             this.gbMain.Controls.Add(this.rbRotatingSquare);
             this.gbMain.Controls.Add(this.btnDecrypt);
             this.gbMain.Controls.Add(this.btnEncrypt);
@@ -275,6 +277,17 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
+            // rbVigenerCipher
+            // 
+            this.rbVigenerCipher.AutoSize = true;
+            this.rbVigenerCipher.Location = new System.Drawing.Point(255, 683);
+            this.rbVigenerCipher.Margin = new System.Windows.Forms.Padding(4);
+            this.rbVigenerCipher.Name = "rbVigenerCipher";
+            this.rbVigenerCipher.Size = new System.Drawing.Size(78, 21);
+            this.rbVigenerCipher.TabIndex = 17;
+            this.rbVigenerCipher.Text = "Vigener";
+            this.rbVigenerCipher.UseVisualStyleBackColor = true;
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -315,6 +328,7 @@
         private System.Windows.Forms.TextBox tbKey;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.RadioButton rbRotatingSquare;
+        private System.Windows.Forms.RadioButton rbVigenerCipher;
     }
 }
 

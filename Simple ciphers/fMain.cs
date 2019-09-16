@@ -19,9 +19,6 @@ namespace Simple_ciphers
 
         private void BtnEncrypt_Click(object sender, EventArgs e)
         {
-            tbKey.Text = Model.Validation.Validation.ModifyKey(tbKey.Text).ToString();
-            rtbSrcText.Text = Model.Validation.Validation.ModifyText(rtbSrcText.Text);
-
             Model.Ciphers.TypesOfCiphers typesOfCipher = Model.Ciphers.TypesOfCiphers.RailFence;
             if (rbRailFence.Checked)
             {
@@ -31,7 +28,13 @@ namespace Simple_ciphers
             {
                 typesOfCipher = Model.Ciphers.TypesOfCiphers.RotatingSquare;
             }
+            else if (rbVigenerCipher.Checked)
+            {
+                typesOfCipher = Model.Ciphers.TypesOfCiphers.Vigenere;
+            }
 
+            tbKey.Text = Model.Validation.Validation.ModifyKey(tbKey.Text, typesOfCipher);
+            rtbSrcText.Text = Model.Validation.Validation.ModifyText(rtbSrcText.Text, typesOfCipher);
 
             if (cbUseDataInRcb.Checked)
             {
@@ -46,10 +49,6 @@ namespace Simple_ciphers
 
         private void BtnDecrypt_Click(object sender, EventArgs e)
         {
-            tbKey.Text = Model.Validation.Validation.ModifyKey(tbKey.Text).ToString();
-            rtbSrcText.Text = Model.Validation.Validation.ModifyText(rtbSrcText.Text);
-
-
             Model.Ciphers.TypesOfCiphers typesOfCipher = Model.Ciphers.TypesOfCiphers.RailFence;
             if (rbRailFence.Checked)
             {
@@ -59,7 +58,13 @@ namespace Simple_ciphers
             {
                 typesOfCipher = Model.Ciphers.TypesOfCiphers.RotatingSquare;
             }
+            else if (rbVigenerCipher.Checked)
+            {
+                typesOfCipher = Model.Ciphers.TypesOfCiphers.Vigenere;
+            }
 
+            tbKey.Text = Model.Validation.Validation.ModifyKey(tbKey.Text, typesOfCipher).ToString();
+            rtbSrcText.Text = Model.Validation.Validation.ModifyText(rtbSrcText.Text, typesOfCipher);
 
             if (cbUseDataInRcb.Checked)
             {

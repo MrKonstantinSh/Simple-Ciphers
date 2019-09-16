@@ -9,18 +9,28 @@ namespace Simple_ciphers.Model.Validation
     public static class Validation
     {
         private const string keyPattern = "[a-zA-ZА-Яа-я`~!@#№$%^&*()_+={}:;|<>,.?/\'\"\t\n\r\\s\\[\\]\\\\-]";
-        private const string textPattern = "[А-Яа-я0-9`~!@#№$%^&*()_+={}:;|<>,.?/\'\"\t\n\r\\s\\[\\]\\\\-]";
+        private const string vigenerKeyPattern = "[a-zA-Z0-9`~!@#№$%^&*()_+={}:;|<>,.?/\'\"\t\n\r\\s\\[\\]\\\\-]";
+        private const string engTextPattern = "[А-Яа-я0-9`~!@#№$%^&*()_+={}:;|<>,.?/\'\"\t\n\r\\s\\[\\]\\\\-]";
+        private const string rusTextPattern = "[a-zA-Z0-9`~!@#№$%^&*()_+={}:;|<>,.?/\'\"\t\n\r\\s\\[\\]\\\\-]";
 
         /// <summary>
         /// Deletes all characters except numbers.
         /// </summary>
         /// <param name="key">The key to change according to the pattern.</param>
         /// <returns>Modified key according to pattern.</returns>
-        public static int ModifyKey(string key)
+        public static string ModifyKey(string key, Ciphers.TypesOfCiphers typeOfCipher)
         {
-            key = Regex.Replace(key, keyPattern, string.Empty);
-            int.TryParse(key, out int numericKey);
-            return numericKey;
+            if (typeOfCipher == Ciphers.TypesOfCiphers.RailFence ||
+                typeOfCipher == Ciphers.TypesOfCiphers.RotatingSquare)
+            {
+                key = Regex.Replace(key, keyPattern, string.Empty);
+            }
+            else
+            {
+                key = Regex.Replace(key, vigenerKeyPattern, string.Empty);
+                key = key.ToUpper();
+            }
+            return key;
         }
 
         /// <summary>
@@ -28,9 +38,18 @@ namespace Simple_ciphers.Model.Validation
         /// </summary>
         /// <param name="text">The text to be modified according to the pattern.</param>
         /// <returns>Modified text to match the pattern.</returns>
-        public static string ModifyText(string text)
+        public static string ModifyText(string text, Ciphers.TypesOfCiphers typeOfCipher)
         {
-            text = Regex.Replace(text, textPattern, string.Empty);
+            if (typeOfCipher == Ciphers.TypesOfCiphers.RailFence || 
+                typeOfCipher == Ciphers.TypesOfCiphers.RotatingSquare)
+            {
+                text = Regex.Replace(text, engTextPattern, string.Empty);
+            }
+            else
+            {
+                text = Regex.Replace(text, rusTextPattern, string.Empty);
+                text = text.ToUpper();
+            }
             return text;
         }
     }
