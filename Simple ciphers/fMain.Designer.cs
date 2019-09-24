@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMain));
             this.gbMain = new System.Windows.Forms.GroupBox();
             this.rbVigenerCipher = new System.Windows.Forms.RadioButton();
             this.rbRotatingSquare = new System.Windows.Forms.RadioButton();
@@ -277,6 +278,7 @@
             this.ClientSize = new System.Drawing.Size(416, 645);
             this.Controls.Add(this.gbMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "fMain";
