@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Simple_ciphers.Model.Validation
 {
@@ -48,8 +47,8 @@ namespace Simple_ciphers.Model.Validation
             else
             {
                 text = Regex.Replace(text, rusTextPattern, string.Empty);
-                text = text.ToUpper();
             }
+            text = text.ToUpper();
             return text;
         }
     }

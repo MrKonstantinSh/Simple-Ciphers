@@ -8,14 +8,14 @@ namespace Simple_ciphers.Model.Ciphers
     /// </summary>
     public class Vigenere : ICipher
     {
-        private readonly string alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+        private readonly string alphabet;
 
         /// <summary>
         /// An empty class constructor. Initializes the alphabet to the default value.
         /// </summary>
         public Vigenere()
         {
-
+            alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
         }
 
         /// <summary>
@@ -35,7 +35,6 @@ namespace Simple_ciphers.Model.Ciphers
         private int GetCharIndexInAlphabet(char chr)
         {
             return alphabet.IndexOf(chr);
-                
         }
 
         /// <summary>
@@ -46,11 +45,15 @@ namespace Simple_ciphers.Model.Ciphers
         /// <returns>Progressive key of the required length.</returns>
         private string GenerateProgressiveKey(string key, int keyLength)
         {
-            string progressiveKey = null;
+            if (key.Length == 0)
+            {
+                throw new DivideByZeroException();
+            }
 
+            string progressiveKey = null;
             for (int i = 0; i < keyLength; i++)
             {
-                int tmp = GetCharIndexInAlphabet(key[i % key.Length]) + (i / key.Length) % alphabet.Length;
+                int tmp = GetCharIndexInAlphabet(key[i % key.Length]) + i / key.Length % alphabet.Length;
                 progressiveKey += alphabet[tmp];
             }
             return progressiveKey;

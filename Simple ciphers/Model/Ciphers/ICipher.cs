@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Simple_ciphers.Model.Ciphers
+﻿namespace Simple_ciphers.Model.Ciphers
 {
     /// <summary>
     /// An interface that includes encryption and decryption methods.

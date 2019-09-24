@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Simple_ciphers
@@ -44,7 +37,7 @@ namespace Simple_ciphers
             {
                 Controller.Controller.Encrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
                     tbKey.Text, typesOfCipher);
-            }
+            } 
         }
 
         private void BtnDecrypt_Click(object sender, EventArgs e)
@@ -98,6 +91,21 @@ namespace Simple_ciphers
             {
                 tbPathToResFile.Text = openFileDialog.FileName;
             }
+        }
+
+        private void RbRotatingSquare_CheckedChanged(object sender, EventArgs e)
+        {
+            tbKey.ReadOnly = true;
+        }
+
+        private void RbRailFence_CheckedChanged(object sender, EventArgs e)
+        {
+            tbKey.ReadOnly = false;
+        }
+
+        private void RbVigenerCipher_CheckedChanged(object sender, EventArgs e)
+        {
+            tbKey.ReadOnly = false;
         }
     }
 }

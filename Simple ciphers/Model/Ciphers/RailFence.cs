@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Simple_ciphers.Model.Ciphers
+﻿namespace Simple_ciphers.Model.Ciphers
 {
     /// <summary>
     /// Class allows you to encrypt and decrypt text using a cipher "rail fence".
@@ -37,7 +35,9 @@ namespace Simple_ciphers.Model.Ciphers
         /// <returns>The ciphertext.</returns>
         public string Encrypt(string plaintext, string key)
         {
-            int numericKey = Convert.ToInt32(Model.Validation.Validation.ModifyKey(key, TypesOfCiphers.RailFence));
+
+            int numericKey;
+            int.TryParse(Validation.Validation.ModifyKey(key, TypesOfCiphers.RailFence), out numericKey);
 
             if (numericKey == 0)
                 numericKey = 1;
@@ -64,7 +64,8 @@ namespace Simple_ciphers.Model.Ciphers
         /// <returns>Decrypted text.</returns>
         public string Decrypt(string ciphertext, string key)
         {
-            int numericKey = Convert.ToInt32(Model.Validation.Validation.ModifyKey(key, TypesOfCiphers.RailFence));
+            int numericKey;
+            int.TryParse(Validation.Validation.ModifyKey(key, TypesOfCiphers.RailFence), out numericKey);
 
             if (numericKey == 0)
                 numericKey = 1;

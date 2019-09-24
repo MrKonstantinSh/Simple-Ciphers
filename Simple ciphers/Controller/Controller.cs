@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Simple_ciphers.Controller
 {
@@ -47,11 +46,25 @@ namespace Simple_ciphers.Controller
                     Model.Ciphers.Vigenere vigener = new Model.Ciphers.Vigenere();
                     if (action == Model.Ciphers.Action.Encrypt)
                     {
-                        return vigener.Encrypt(text, key);
+                        try
+                        {
+                            return vigener.Encrypt(text, key);
+                        }
+                        catch (DivideByZeroException)
+                        {
+                            return text;
+                        }
                     }
                     else
                     {
-                        return vigener.Decrypt(text, key);
+                        try
+                        {
+                            return vigener.Decrypt(text, key);
+                        }
+                        catch (DivideByZeroException)
+                        {
+                            return text;
+                        }
                     }
                 default:
                     return null;

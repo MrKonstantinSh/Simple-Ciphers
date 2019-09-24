@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Simple_ciphers.Model.Ciphers
 {
@@ -52,7 +51,6 @@ namespace Simple_ciphers.Model.Ciphers
                 new int[2]
             };
 
-            int k = 0;
             foreach (int[] elem in key)
             {
                 int x;
@@ -75,8 +73,7 @@ namespace Simple_ciphers.Model.Ciphers
                 }
 
                 int[] newHoleIndex = { x, y };
-                newHoleIndices[k] = newHoleIndex;
-                k++;
+                newHoleIndices[newHoleIndex[1]] = newHoleIndex;
             }
             return newHoleIndices;
         }
@@ -89,7 +86,7 @@ namespace Simple_ciphers.Model.Ciphers
         private string ExpandString (string str)
         {
             Random rand = new Random();
-            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             while (str.Length % 16 != 0)
             {
                 str += alphabet[rand.Next(alphabet.Length)];
@@ -222,9 +219,10 @@ namespace Simple_ciphers.Model.Ciphers
         /// <returns>Decrypted text.</returns>
         public string Decrypt(string ciphertext)
         {
+            ciphertext = ExpandString(ciphertext);
             List<string> blocksOfText = Split(ciphertext, 16);
-            string plaintext = null;
 
+            string plaintext = null;
             foreach (string element in blocksOfText)
             {
                 plaintext += DecryptSquare(element);
