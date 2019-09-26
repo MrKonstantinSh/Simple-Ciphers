@@ -5,8 +5,8 @@
     /// </summary>
     public interface ICipher
     {
-        string Encrypt(string plaintext, string key);
+        string Encrypt(string plaintext, string key = null);
 
-        string Decrypt(string ciphertext, string key);
+        string Decrypt(string ciphertext, string key = null);
     }
 }
