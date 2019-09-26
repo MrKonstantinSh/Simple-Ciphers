@@ -103,14 +103,11 @@ namespace Simple_ciphers.Model.Ciphers
         private List<string> Split(string str, int numberOfChar)
         {
             List<string> suitableSizeStrings = new List<string>();
+            int startPos = 0;
             while (str.Length != 0)
             {
-                int currentPos = 0;
-
-                suitableSizeStrings.Add(str.Substring(currentPos, numberOfChar));
-                str = str.Remove(currentPos, numberOfChar);
-                currentPos += numberOfChar;
-
+                suitableSizeStrings.Add(str.Substring(startPos, numberOfChar));
+                str = str.Remove(startPos, numberOfChar);
             }
             return suitableSizeStrings;
         }
