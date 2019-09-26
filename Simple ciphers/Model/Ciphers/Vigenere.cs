@@ -41,9 +41,9 @@ namespace Simple_ciphers.Model.Ciphers
         /// Generates a progressive key for the Vigenere cipher.
         /// </summary>
         /// <param name="key">Source key.</param>
-        /// <param name="keyLength">The required key length.</param>
+        /// <param name="requiredKeyLen">The required key length.</param>
         /// <returns>Progressive key of the required length.</returns>
-        private string GenerateProgressiveKey(string key, int keyLength)
+        private string GenerateProgressiveKey(string key, int requiredKeyLen)
         {
             if (key.Length == 0)
             {
@@ -51,7 +51,7 @@ namespace Simple_ciphers.Model.Ciphers
             }
 
             string progressiveKey = null;
-            for (int i = 0; i < keyLength; i++)
+            for (int i = 0; i < requiredKeyLen; i++)
             {
                 int tmp = GetCharIndexInAlphabet(key[i % key.Length]) + i / key.Length % alphabet.Length;
                 progressiveKey += alphabet[tmp];
