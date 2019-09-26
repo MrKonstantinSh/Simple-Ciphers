@@ -210,7 +210,7 @@ namespace Simple_ciphers.Model.Ciphers
         }
 
         /// <summary>
-        /// Decrypts the text using the rotating grill algorithm.
+        /// Decrypts the text using the "rotating grill" algorithm.
         /// </summary>
         /// <param name="ciphertext">The text to decrypt.</param>
         /// <returns>Decrypted text.</returns>
