@@ -99,6 +99,7 @@ namespace Simple_ciphers
         private void RbRotatingSquare_CheckedChanged(object sender, EventArgs e)
         {
             tbKey.ReadOnly = true;
+            tbKey.Text = null;
         }
 
         private void RbRailFence_CheckedChanged(object sender, EventArgs e)

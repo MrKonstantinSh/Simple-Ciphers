@@ -5,7 +5,7 @@ namespace Simple_ciphers.Model.Ciphers
 {
     /// <summary>
     /// Class allows you to encrypt and decrypt text using a cipher "rotating grill".
-    /// About cipher: https://www.youtube.com/watch?v=IbmOJEGFlK4.
+    /// About cipher: https://en.wikipedia.org/wiki/Grille_(cryptography).
     /// </summary>
     public class RotatingGrill
     {
