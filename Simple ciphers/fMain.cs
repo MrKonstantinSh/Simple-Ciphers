@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using Simple_ciphers.Model.Ciphers;
+using Simple_ciphers.Model.Validation;
+using Simple_ciphers.Controller;
 
 namespace Simple_ciphers
 {
@@ -12,61 +15,61 @@ namespace Simple_ciphers
 
         private void BtnEncrypt_Click(object sender, EventArgs e)
         {
-            Model.Ciphers.TypesOfCiphers typesOfCipher = Model.Ciphers.TypesOfCiphers.RailFence;
+            TypesOfCiphers typesOfCipher = TypesOfCiphers.RailFence;
             if (rbRailFence.Checked)
             {
-                typesOfCipher = Model.Ciphers.TypesOfCiphers.RailFence;
+                typesOfCipher = TypesOfCiphers.RailFence;
             }
             else if (rbRotatingSquare.Checked)
             {
-                typesOfCipher = Model.Ciphers.TypesOfCiphers.RotatingSquare;
+                typesOfCipher = TypesOfCiphers.RotatingSquare;
             }
             else if (rbVigenerCipher.Checked)
             {
-                typesOfCipher = Model.Ciphers.TypesOfCiphers.Vigenere;
+                typesOfCipher = TypesOfCiphers.Vigenere;
             }
 
-            tbKey.Text = Model.Validation.Validation.ModifyKey(tbKey.Text, typesOfCipher);
-            rtbSrcText.Text = Model.Validation.Validation.ModifyText(rtbSrcText.Text, typesOfCipher);
+            tbKey.Text = Validation.ModifyKey(tbKey.Text, typesOfCipher);
+            rtbSrcText.Text = Validation.ModifyText(rtbSrcText.Text, typesOfCipher);
 
             if (cbUseDataInRcb.Checked)
             {
-                rtbResText.Text = Controller.Controller.Encrypt(rtbSrcText.Text, tbKey.Text, typesOfCipher);
+                rtbResText.Text = MainController.Encrypt(rtbSrcText.Text, tbKey.Text, typesOfCipher);
             }
             else
             {
-                Controller.Controller.Encrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
+                MainController.Encrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
                     tbKey.Text, typesOfCipher);
             } 
         }
 
         private void BtnDecrypt_Click(object sender, EventArgs e)
         {
-            Model.Ciphers.TypesOfCiphers typesOfCipher = Model.Ciphers.TypesOfCiphers.RailFence;
+            TypesOfCiphers typesOfCipher = TypesOfCiphers.RailFence;
             if (rbRailFence.Checked)
             {
-                typesOfCipher = Model.Ciphers.TypesOfCiphers.RailFence;
+                typesOfCipher = TypesOfCiphers.RailFence;
             }
             else if (rbRotatingSquare.Checked)
             {
-                typesOfCipher = Model.Ciphers.TypesOfCiphers.RotatingSquare;
+                typesOfCipher = TypesOfCiphers.RotatingSquare;
             }
             else if (rbVigenerCipher.Checked)
             {
-                typesOfCipher = Model.Ciphers.TypesOfCiphers.Vigenere;
+                typesOfCipher = TypesOfCiphers.Vigenere;
             }
 
-            tbKey.Text = Model.Validation.Validation.ModifyKey(tbKey.Text, typesOfCipher).ToString();
-            rtbSrcText.Text = Model.Validation.Validation.ModifyText(rtbSrcText.Text, typesOfCipher);
+            tbKey.Text = Validation.ModifyKey(tbKey.Text, typesOfCipher).ToString();
+            rtbSrcText.Text = Validation.ModifyText(rtbSrcText.Text, typesOfCipher);
 
             if (cbUseDataInRcb.Checked)
             {
-                rtbResText.Text = Controller.Controller.Decrypt(rtbSrcText.Text, tbKey.Text,
+                rtbResText.Text = MainController.Decrypt(rtbSrcText.Text, tbKey.Text,
                     typesOfCipher);
             }
             else
             {
-                Controller.Controller.Decrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
+                MainController.Decrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
                     tbKey.Text, typesOfCipher);
             }
         }

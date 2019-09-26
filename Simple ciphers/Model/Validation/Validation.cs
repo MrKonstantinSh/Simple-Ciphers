@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using Simple_ciphers.Model.Ciphers;
 
 namespace Simple_ciphers.Model.Validation
 {
@@ -17,10 +18,10 @@ namespace Simple_ciphers.Model.Validation
         /// </summary>
         /// <param name="key">The key to change according to the pattern.</param>
         /// <returns>Modified key according to pattern.</returns>
-        public static string ModifyKey(string key, Ciphers.TypesOfCiphers typeOfCipher)
+        public static string ModifyKey(string key, TypesOfCiphers typeOfCipher)
         {
-            if (typeOfCipher == Ciphers.TypesOfCiphers.RailFence ||
-                typeOfCipher == Ciphers.TypesOfCiphers.RotatingSquare)
+            if (typeOfCipher == TypesOfCiphers.RailFence ||
+                typeOfCipher == TypesOfCiphers.RotatingSquare)
             {
                 key = Regex.Replace(key, keyPattern, string.Empty);
             }
@@ -37,10 +38,10 @@ namespace Simple_ciphers.Model.Validation
         /// </summary>
         /// <param name="text">The text to be modified according to the pattern.</param>
         /// <returns>Modified text to match the pattern.</returns>
-        public static string ModifyText(string text, Ciphers.TypesOfCiphers typeOfCipher)
+        public static string ModifyText(string text, TypesOfCiphers typeOfCipher)
         {
-            if (typeOfCipher == Ciphers.TypesOfCiphers.RailFence || 
-                typeOfCipher == Ciphers.TypesOfCiphers.RotatingSquare)
+            if (typeOfCipher == TypesOfCiphers.RailFence || 
+                typeOfCipher == TypesOfCiphers.RotatingSquare)
             {
                 text = Regex.Replace(text, engTextPattern, string.Empty);
             }

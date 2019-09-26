@@ -1,12 +1,14 @@
 ﻿using System;
 using System.IO;
+using Simple_ciphers.Model.Ciphers;
+using Simple_ciphers.Model.Validation;
 
 namespace Simple_ciphers.Controller
 {
     /// <summary>
     /// The class provides a convenient set of methods for working with encryption / decryption algorithms.
     /// </summary>
-    public static class Controller
+    public static class MainController
     {
         /// <summary>
         /// Performs one of the possible actions: encrypts or decrypts data.
@@ -17,13 +19,12 @@ namespace Simple_ciphers.Controller
         /// <param name="action">Action to be taken (encrypt / decrypt).</param>
         /// <returns>The result of encryption / decryption.</returns>
         private static string PerformAction(string text, string key, 
-            Model.Ciphers.TypesOfCiphers typeOfChiper,
-            Model.Ciphers.Action action)
+            TypesOfCiphers typeOfChiper, Model.Ciphers.Action action)
         {
             switch (typeOfChiper)
             {
-                case Model.Ciphers.TypesOfCiphers.RailFence:
-                    Model.Ciphers.RailFence railFence = new Model.Ciphers.RailFence();
+                case TypesOfCiphers.RailFence:
+                    RailFence railFence = new RailFence();
                     if (action == Model.Ciphers.Action.Encrypt)
                     {
                         return railFence.Encrypt(text, key);
@@ -32,8 +33,8 @@ namespace Simple_ciphers.Controller
                     {
                         return railFence.Decrypt(text, key);
                     }
-                case Model.Ciphers.TypesOfCiphers.RotatingSquare:
-                    Model.Ciphers.RotatingGrill rotatingSquare = new Model.Ciphers.RotatingGrill();
+                case TypesOfCiphers.RotatingSquare:
+                    RotatingGrill rotatingSquare = new RotatingGrill();
                     if (action == Model.Ciphers.Action.Encrypt)
                     {
                         return rotatingSquare.Encrypt(text);
@@ -42,8 +43,8 @@ namespace Simple_ciphers.Controller
                     {
                         return rotatingSquare.Decrypt(text);
                     }
-                case Model.Ciphers.TypesOfCiphers.Vigenere:
-                    Model.Ciphers.Vigenere vigener = new Model.Ciphers.Vigenere();
+                case TypesOfCiphers.Vigenere:
+                    Vigenere vigener = new Vigenere();
                     if (action == Model.Ciphers.Action.Encrypt)
                     {
                         try
@@ -79,7 +80,7 @@ namespace Simple_ciphers.Controller
         /// <param name="key">The key for the encryption algorithm.</param>
         /// <param name="typeOfChiper">The name of the encryption algorithm.</param>
         public static void Encrypt(string pathToSrcFile, string pathToDestFile,
-            string key, Model.Ciphers.TypesOfCiphers typeOfChiper)
+            string key, TypesOfCiphers typeOfChiper)
         {
             string plaintext;
             try
@@ -91,7 +92,7 @@ namespace Simple_ciphers.Controller
                 throw new IOException();
             }
 
-            plaintext = Model.Validation.Validation.ModifyText(plaintext, typeOfChiper);
+            plaintext = Validation.ModifyText(plaintext, typeOfChiper);
 
             string ciphertext = PerformAction(plaintext, key, typeOfChiper, Model.Ciphers.Action.Encrypt);
 
@@ -118,7 +119,7 @@ namespace Simple_ciphers.Controller
         /// <param name="key">The key for the decryption algorithm.</param>
         /// <param name="typeOfChiper">The name of the decryption algorithm.</param>
         public static void Decrypt(string pathToSrcFile, string pathToDestFile,
-            string key, Model.Ciphers.TypesOfCiphers typeOfChiper)
+            string key, TypesOfCiphers typeOfChiper)
         {
             string ciphertext;
             try
@@ -130,7 +131,7 @@ namespace Simple_ciphers.Controller
                 throw new IOException();
             }
 
-            ciphertext = Model.Validation.Validation.ModifyText(ciphertext, typeOfChiper);
+            ciphertext = Validation.ModifyText(ciphertext, typeOfChiper);
 
             string plaintext = PerformAction(ciphertext, key, typeOfChiper, Model.Ciphers.Action.Decrypt);
             File.WriteAllText(pathToDestFile, plaintext);
@@ -143,7 +144,7 @@ namespace Simple_ciphers.Controller
         /// <param name="key">The key for the decryption algorithm.</param>
         /// <param name="typeOfChiper">The name of the decryption algorithm.</param>
         /// <returns>Decrypted text.</returns>
-        public static string Decrypt(string ciphertext, string key, Model.Ciphers.TypesOfCiphers typeOfChiper)
+        public static string Decrypt(string ciphertext, string key, TypesOfCiphers typeOfChiper)
         {
             return PerformAction(ciphertext, key, typeOfChiper, Model.Ciphers.Action.Decrypt);
         }
