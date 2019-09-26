@@ -7,7 +7,7 @@ namespace Simple_ciphers.Model.Ciphers
     /// Class allows you to encrypt and decrypt text using a cipher "rotating grill".
     /// About cipher: https://en.wikipedia.org/wiki/Grille_(cryptography).
     /// </summary>
-    public class RotatingGrill
+    public class RotatingGrill : ICipher
     {
         private readonly int[][] key = new int[4][];
         private readonly int grillSize = 4;
@@ -196,7 +196,7 @@ namespace Simple_ciphers.Model.Ciphers
         /// </summary>
         /// <param name="plaintext">The text to be encrypted.</param>
         /// <returns>The ciphertext.</returns>
-        public string Encrypt(string plaintext)
+        public string Encrypt(string plaintext, string key = null)
         {
             plaintext = ExpandString(plaintext);
             List<string> blocksOfText = Split(plaintext, 16);
@@ -214,7 +214,7 @@ namespace Simple_ciphers.Model.Ciphers
         /// </summary>
         /// <param name="ciphertext">The text to decrypt.</param>
         /// <returns>Decrypted text.</returns>
-        public string Decrypt(string ciphertext)
+        public string Decrypt(string ciphertext, string key = null)
         {
             ciphertext = ExpandString(ciphertext);
             List<string> blocksOfText = Split(ciphertext, 16);
