@@ -29,8 +29,8 @@ namespace Simple_ciphers
                 typesOfCipher = TypesOfCiphers.Vigenere;
             }
 
-            tbKey.Text = Validation.ModifyKey(tbKey.Text, typesOfCipher);
-            rtbSrcText.Text = Validation.ModifyText(rtbSrcText.Text, typesOfCipher);
+            tbKey.Text = KeyValidation.ModifyKey(tbKey.Text, typesOfCipher);
+            rtbSrcText.Text = TextValidation.ModifyText(rtbSrcText.Text, typesOfCipher);
 
             if (cbUseDataInRcb.Checked)
             {
@@ -59,8 +59,8 @@ namespace Simple_ciphers
                 typesOfCipher = TypesOfCiphers.Vigenere;
             }
 
-            tbKey.Text = Validation.ModifyKey(tbKey.Text, typesOfCipher).ToString();
-            rtbSrcText.Text = Validation.ModifyText(rtbSrcText.Text, typesOfCipher);
+            tbKey.Text = KeyValidation.ModifyKey(tbKey.Text, typesOfCipher).ToString();
+            rtbSrcText.Text = TextValidation.ModifyText(rtbSrcText.Text, typesOfCipher);
 
             if (cbUseDataInRcb.Checked)
             {

@@ -92,7 +92,7 @@ namespace Simple_ciphers.Controller
                 throw new IOException();
             }
 
-            plaintext = Validation.ModifyText(plaintext, typeOfChiper);
+            plaintext = TextValidation.ModifyText(plaintext, typeOfChiper);
 
             string ciphertext = PerformAction(plaintext, key, typeOfChiper, Model.Ciphers.Action.Encrypt);
 
@@ -131,7 +131,7 @@ namespace Simple_ciphers.Controller
                 throw new IOException();
             }
 
-            ciphertext = Validation.ModifyText(ciphertext, typeOfChiper);
+            ciphertext = TextValidation.ModifyText(ciphertext, typeOfChiper);
 
             string plaintext = PerformAction(ciphertext, key, typeOfChiper, Model.Ciphers.Action.Decrypt);
             File.WriteAllText(pathToDestFile, plaintext);
