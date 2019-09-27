@@ -87,6 +87,10 @@ namespace Simple_ciphers.Controller
             {
                 plaintext = File.ReadAllText(pathToSrcFile);
             }
+            catch (ArgumentException)
+            {
+                throw new ArgumentException();
+            }
             catch (IOException)
             {
                 throw new IOException();
@@ -125,6 +129,10 @@ namespace Simple_ciphers.Controller
             try
             {
                 ciphertext = File.ReadAllText(pathToSrcFile);
+            }
+            catch (ArgumentException)
+            {
+                throw new ArgumentException();
             }
             catch (IOException)
             {

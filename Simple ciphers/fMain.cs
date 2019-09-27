@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Simple_ciphers.Model.Ciphers;
 using Simple_ciphers.Model.Validation;
 using Simple_ciphers.Controller;
+using System.IO;
 
 namespace Simple_ciphers
 {
@@ -38,8 +39,19 @@ namespace Simple_ciphers
             }
             else
             {
-                MainController.Encrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
+                try
+                {
+                    MainController.Encrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
                     tbKey.Text, typesOfCipher);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("Incorrect file path entered!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Incorrect file path entered!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             } 
         }
 
@@ -69,8 +81,19 @@ namespace Simple_ciphers
             }
             else
             {
-                MainController.Decrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
+                try
+                {
+                    MainController.Decrypt(tbPathToSrcFile.Text, tbPathToResFile.Text,
                     tbKey.Text, typesOfCipher);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("Incorrect file path entered!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Incorrect file path entered!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
